@@ -30,7 +30,17 @@
                             <outlet property="delegate" destination="IdN-hZ-kte" id="YZD-Pj-uv2"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="To do List" id="PtX-od-810"/>
+                    <navigationItem key="navigationItem" title="To do List" id="PtX-od-810">
+                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="PB9-Te-O9b">
+                            <color key="tintColor" red="0.99067137409999995" green="0.99067137409999995" blue="0.99067137409999995" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            <connections>
+                                <action selector="barButtonClick_event:" destination="IdN-hZ-kte" id="ccg-lG-nK1"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="listItemButton" destination="PB9-Te-O9b" id="54n-mu-Kqb"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="zTu-gQ-4Fm" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
@@ -55,9 +65,13 @@
             <point key="canvasLocation" x="621.73913043478262" y="80.357142857142847"/>
         </scene>
     </scenes>
+    <color key="tintColor" systemColor="systemTealColor"/>
     <resources>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+        <systemColor name="systemTealColor">
+            <color red="0.35294117647058826" green="0.78431372549019607" blue="0.98039215686274506" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
     </resources>
 </document>

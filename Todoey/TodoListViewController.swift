@@ -8,7 +8,8 @@
 import UIKit
 
 class TodoListViewController: UITableViewController {
-
+    @IBOutlet weak var listItemButton: UIBarButtonItem!
+    
     var shoppingList = ["Buy Cocount Oil", "Buy a Soap", "Buy Apple"]
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -43,5 +44,23 @@ class TodoListViewController: UITableViewController {
         
         tableView.deselectRow(at: indexPath, animated: true)
     }
+    
+    //MARK - UIBar Button Item Click Event.
+    @IBAction func barButtonClick_event(_ sender: UIBarButtonItem) {
+        var tempAlertTextField = UITextField()
+        let alert = UIAlertController(title: "", message: "Please add To do List Item", preferredStyle: .alert)
+        let alertAction = UIAlertAction(title: "Ok", style: .default) { (alertAction) in
+            print("Okay Button Clicked",(tempAlertTextField.text)!)
+            self.shoppingList.append(tempAlertTextField.text ?? "")
+            self.tableView.reloadData()
+        }
+        alert.addTextField { (alertTextField) in
+            tempAlertTextField = alertTextField
+        }
+        alert.addAction(alertAction)
+        
+        present(alert, animated: true, completion: nil)
+    }
+    
 }
 
