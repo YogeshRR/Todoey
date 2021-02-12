@@ -9,13 +9,22 @@ import UIKit
 
 class TodoListViewController: UITableViewController {
     @IBOutlet weak var listItemButton: UIBarButtonItem!
+    var userDefaults = UserDefaults.standard
     
-    var shoppingList = ["Buy Cocount Oil", "Buy a Soap", "Buy Apple"]
+    var shoppingList = [Items]()
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
+//        let newItem = Items()
+//        newItem.title = "By Onion"
+//        newItem.done = true
+//        shoppingList.append(newItem)
         
-        
+        if let shoppingListArray = userDefaults.array(forKey: "shoppingListName") as? [Items] {
+
+            shoppingList = shoppingListArray
+        }
+           
     }
     
     //MARK - TableView Datasource Method
@@ -27,7 +36,8 @@ class TodoListViewController: UITableViewController {
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "todoListCell", for: indexPath)
-        cell.textLabel?.text = shoppingList[indexPath.row]
+        let item = shoppingList[indexPath.row]
+        cell.textLabel?.text = item.title
         
         return cell
     }
@@ -51,7 +61,12 @@ class TodoListViewController: UITableViewController {
         let alert = UIAlertController(title: "", message: "Please add To do List Item", preferredStyle: .alert)
         let alertAction = UIAlertAction(title: "Ok", style: .default) { (alertAction) in
             print("Okay Button Clicked",(tempAlertTextField.text)!)
-            self.shoppingList.append(tempAlertTextField.text ?? "")
+            let newItem = Items()
+            newItem.title = tempAlertTextField.text ?? ""
+            self.shoppingList.append(newItem)
+            //self.userDefaults.set(self.shoppingList, forKey: "shoppingListName")
+            self.userDefaults.set(self.shoppingList, forKey: "shoppingListName") as? [Items]
+            self.userDefaults.synchronize()
             self.tableView.reloadData()
         }
         alert.addTextField { (alertTextField) in
