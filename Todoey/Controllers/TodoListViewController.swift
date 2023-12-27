@@ -12,6 +12,7 @@ class TodoListViewController: UITableViewController {
     @IBOutlet weak var listItemButton: UIBarButtonItem!
     var userDefaults = UserDefaults.standard
     
+    @IBOutlet weak var todoListSearchBar: UISearchBar!
     var shoppingList = [Items]()
     let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
     override func viewDidLoad() {
@@ -87,14 +88,25 @@ class TodoListViewController: UITableViewController {
         tableView.reloadData()
     }
     
-    func loadItems()  {
-        let request : NSFetchRequest<Items> = Items.fetchRequest()
+    func loadItems(with request : NSFetchRequest<Items> = Items.fetchRequest())  {
+        
         do {
           shoppingList =  try context.fetch(request)
         }catch {
             print("Unaable to load data\(error)")
         }
         
+    }
+}
+
+extension TodoListViewController : UISearchBarDelegate {
+    
+    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
+        let request : NSFetchRequest<Items> = Items.fetchRequest()
+        request.predicate = NSPredicate(format: "title CONTAINS %@", searchBar.text!)
+        request.sortDescriptors = [NSSortDescriptor(key: "title", ascending: true)]
+        
+        loadItems(with: request)
     }
 }
 
