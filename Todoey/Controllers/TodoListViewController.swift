@@ -6,24 +6,20 @@
 //
 
 import UIKit
+import CoreData
 
 class TodoListViewController: UITableViewController {
     @IBOutlet weak var listItemButton: UIBarButtonItem!
     var userDefaults = UserDefaults.standard
     
     var shoppingList = [Items]()
+    let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view.
-//        let newItem = Items()
-//        newItem.title = "By Onion"
-//        newItem.done = true
-//        shoppingList.append(newItem)
         
-        if let shoppingListArray = userDefaults.array(forKey: "shoppingListName") as? [Items] {
-
-            shoppingList = shoppingListArray
-        }
+        print(FileManager.default.urls(for: .documentDirectory, in: .userDomainMask))
+        
+        loadItems()
            
     }
     
@@ -46,11 +42,15 @@ class TodoListViewController: UITableViewController {
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         print(shoppingList[indexPath.row])
-        if tableView.cellForRow(at: indexPath)?.accessoryType == .checkmark {
+       /* if tableView.cellForRow(at: indexPath)?.accessoryType == .checkmark {
             tableView.cellForRow(at: indexPath)?.accessoryType = .none
         }else {
             tableView.cellForRow(at: indexPath)?.accessoryType = .checkmark
-        }
+        }*/
+        
+        context.delete(shoppingList[indexPath.row])
+        shoppingList.remove(at: indexPath.row)
+        saveData()
         
         tableView.deselectRow(at: indexPath, animated: true)
     }
@@ -61,12 +61,11 @@ class TodoListViewController: UITableViewController {
         let alert = UIAlertController(title: "", message: "Please add To do List Item", preferredStyle: .alert)
         let alertAction = UIAlertAction(title: "Ok", style: .default) { (alertAction) in
             print("Okay Button Clicked",(tempAlertTextField.text)!)
-            let newItem = Items()
+            
+            let newItem = Items(context: self.context)
             newItem.title = tempAlertTextField.text ?? ""
+            newItem.done = false
             self.shoppingList.append(newItem)
-            //self.userDefaults.set(self.shoppingList, forKey: "shoppingListName")
-            self.userDefaults.set(self.shoppingList, forKey: "shoppingListName") as? [Items]
-            self.userDefaults.synchronize()
             self.tableView.reloadData()
         }
         alert.addTextField { (alertTextField) in
@@ -77,5 +76,25 @@ class TodoListViewController: UITableViewController {
         present(alert, animated: true, completion: nil)
     }
     
+    func saveData() {
+        do{
+            try context.save()
+        }
+        catch {
+            print(error.localizedDescription)
+        }
+        
+        tableView.reloadData()
+    }
+    
+    func loadItems()  {
+        let request : NSFetchRequest<Items> = Items.fetchRequest()
+        do {
+          shoppingList =  try context.fetch(request)
+        }catch {
+            print("Unaable to load data\(error)")
+        }
+        
+    }
 }
 

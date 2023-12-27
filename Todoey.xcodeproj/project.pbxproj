@@ -15,7 +15,6 @@
 		DECD724525C9267400F4713D /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DECD724325C9267400F4713D /* LaunchScreen.storyboard */; };
 		DECD725025C9267600F4713D /* TodoeyTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = DECD724F25C9267600F4713D /* TodoeyTests.swift */; };
 		DECD725B25C9267600F4713D /* TodoeyUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = DECD725A25C9267600F4713D /* TodoeyUITests.swift */; };
-		DECD727225D0FC9700F4713D /* Items.swift in Sources */ = {isa = PBXBuildFile; fileRef = DECD727125D0FC9600F4713D /* Items.swift */; };
 		EC5F50F12B3AC40B00C6B266 /* DataModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = EC5F50EF2B3AC40B00C6B266 /* DataModel.xcdatamodeld */; };
 /* End PBXBuildFile section */
 
@@ -51,7 +50,6 @@
 		DECD725625C9267600F4713D /* TodoeyUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = TodoeyUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		DECD725A25C9267600F4713D /* TodoeyUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodoeyUITests.swift; sourceTree = "<group>"; };
 		DECD725C25C9267600F4713D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		DECD727125D0FC9600F4713D /* Items.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Items.swift; sourceTree = "<group>"; };
 		EC5F50F02B3AC40B00C6B266 /* DataModel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = DataModel.xcdatamodel; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -133,7 +131,6 @@
 		DECD727625D1016B00F4713D /* Data Models */ = {
 			isa = PBXGroup;
 			children = (
-				DECD727125D0FC9600F4713D /* Items.swift */,
 				EC5F50EF2B3AC40B00C6B266 /* DataModel.xcdatamodeld */,
 			);
 			path = "Data Models";
@@ -296,7 +293,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				DECD727225D0FC9700F4713D /* Items.swift in Sources */,
 				EC5F50F12B3AC40B00C6B266 /* DataModel.xcdatamodeld in Sources */,
 				DECD723D25C9266100F4713D /* TodoListViewController.swift in Sources */,
 				DECD723925C9266100F4713D /* AppDelegate.swift in Sources */,
