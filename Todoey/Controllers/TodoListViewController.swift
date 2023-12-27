@@ -92,10 +92,12 @@ class TodoListViewController: UITableViewController {
         
         do {
           shoppingList =  try context.fetch(request)
+        
         }catch {
             print("Unaable to load data\(error)")
         }
         
+        tableView.reloadData()
     }
 }
 
@@ -107,6 +109,16 @@ extension TodoListViewController : UISearchBarDelegate {
         request.sortDescriptors = [NSSortDescriptor(key: "title", ascending: true)]
         
         loadItems(with: request)
+    }
+    
+    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+        if searchBar.text?.count == 0 {
+            DispatchQueue.main.async {
+                searchBar.resignFirstResponder()
+            }
+            loadItems()
+            
+        }
     }
 }
 
