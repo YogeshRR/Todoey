@@ -89,6 +89,21 @@ class CategoryListViewControllerTableViewController: UITableViewController {
         return cell
     }
     
+    // MARK: - TableView Delegate Method
+    
+    
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        performSegue(withIdentifier: "goToDoList", sender: self)
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        let destinationVC = segue.destination as! TodoListViewController
+        
+        if let indexPath = tableView.indexPathForSelectedRow {
+            destinationVC.selectedCategory = categoryList[indexPath.row]
+        }
+    }
+    
 
     /*
     // Override to support conditional editing of the table view.
