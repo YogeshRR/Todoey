@@ -16,6 +16,7 @@
 		DECD725025C9267600F4713D /* TodoeyTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = DECD724F25C9267600F4713D /* TodoeyTests.swift */; };
 		DECD725B25C9267600F4713D /* TodoeyUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = DECD725A25C9267600F4713D /* TodoeyUITests.swift */; };
 		EC5F50F12B3AC40B00C6B266 /* DataModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = EC5F50EF2B3AC40B00C6B266 /* DataModel.xcdatamodeld */; };
+		ECF4853E2B55369A00F2989E /* CategoryListViewControllerTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECF4853D2B55369A00F2989E /* CategoryListViewControllerTableViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -51,6 +52,7 @@
 		DECD725A25C9267600F4713D /* TodoeyUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodoeyUITests.swift; sourceTree = "<group>"; };
 		DECD725C25C9267600F4713D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		EC5F50F02B3AC40B00C6B266 /* DataModel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = DataModel.xcdatamodel; sourceTree = "<group>"; };
+		ECF4853D2B55369A00F2989E /* CategoryListViewControllerTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryListViewControllerTableViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -142,6 +144,7 @@
 				DECD723825C9266100F4713D /* AppDelegate.swift */,
 				DECD723A25C9266100F4713D /* SceneDelegate.swift */,
 				DECD723C25C9266100F4713D /* TodoListViewController.swift */,
+				ECF4853D2B55369A00F2989E /* CategoryListViewControllerTableViewController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -293,6 +296,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				ECF4853E2B55369A00F2989E /* CategoryListViewControllerTableViewController.swift in Sources */,
 				EC5F50F12B3AC40B00C6B266 /* DataModel.xcdatamodeld in Sources */,
 				DECD723D25C9266100F4713D /* TodoListViewController.swift in Sources */,
 				DECD723925C9266100F4713D /* AppDelegate.swift in Sources */,
